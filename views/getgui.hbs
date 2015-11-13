@@ -1,0 +1,27 @@
+<SCRIPT LANGUAGE="JavaScript">
+    $(document).ready(function() {
+
+
+    });
+
+    var socket = io.connect( "http://localhost:8000");
+
+
+    socket.on('chat', function(data){
+        $('#chat').append(
+
+                data.name
+
+        )
+
+
+
+
+    })
+</SCRIPT>
+
+
+<div id="chat">
+
+
+</div>

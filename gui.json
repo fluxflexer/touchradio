@@ -1,0 +1,13 @@
+{
+  "gui": {
+    "buttons": [
+      {
+        "id": "testbutton",
+        "xpos": "100",
+        "ypos": "100",
+        "width": "50",
+        "heigth": "50"
+      }
+    ]
+  }
+}

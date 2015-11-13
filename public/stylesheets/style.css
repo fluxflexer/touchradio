@@ -1,0 +1,43 @@
+/*+clearfix {*/
+#testdiv:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+}
+
+#testdiv {
+  display: block;
+  *height: 1px;
+}
+
+/*+}*/
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #2E3032;
+  color: #B4BDCA;
+  background-image: url("../images/Gui_bgnd.png");
+  background-repeat:fixed;
+}
+
+/*[clearfix]*/
+#testdiv {
+  height: 60px;
+  width: 60px;
+  /*+placement: 93px 94px;*/
+  position: relative;
+  left: 93px;
+  top: 94px;
+  position: absolute;
+}
+
+.guibutton {
+  border: 1px solid #E00D0D !important;
+}
+
+a {
+  color: #00B7FF;
+}
