@@ -18,12 +18,17 @@ http.listen(8000, "127.0.0.1");
 
 io.on('connection',function(socket){
   console.log("A user is connected");
+  socket.emit('chat',{name: 'Olli'});
+
+
+  socket.emit('chat',{name: 'time'});
+
+  socket.on('message', function(data){
+    console.log('received' + data);
+
+  })
+
 });
-
-
-io.socket.emit('chat',{name: 'Olli'});
-
-
 
 
 
