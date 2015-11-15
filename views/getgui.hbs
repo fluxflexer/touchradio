@@ -3,19 +3,21 @@
     var socket = io.connect( "http://localhost:8000");
 
     $(document).ready(function() {
-        socket.emit('message','rcd');
-        $('.guibutton').on('click',function(){
+        socket.emit('message',{msg:'loaded'});
+
+
+        $('.guibutton').on('click',function(event){
            // alert('clicked');
-            buttoneClicked();
+            buttonClicked(event.target.id);
         })
 
     });
 
 
-function buttoneClicked(){
+function buttonClicked(id){
 
 
-    socket.emit('message',{msg:'buttonclick'});
+    socket.emit('message',{msg:id});
 }
 
 

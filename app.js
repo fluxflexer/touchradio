@@ -24,7 +24,7 @@ io.on('connection',function(socket){
   socket.emit('chat',{name: 'time'});
 
   socket.on('message', function(data){
-    console.log('received' + data);
+    console.log('received: ' + data.msg);
 
   })
 
