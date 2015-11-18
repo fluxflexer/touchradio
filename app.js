@@ -13,18 +13,21 @@ var getgui = require('./routes/getgui');
 var app = express();
 var http = require( "http" ).createServer( app );
 var io = require( "socket.io" )( http );
-http.listen(8000, "127.0.0.1");
+http.listen(8000, "localhost");
 
 
 io.on('connection',function(socket){
   console.log("A user is connected");
-  socket.emit('chat',{name: 'Olli'});
+
+    buildGui(socket);
 
 
-  socket.emit('chat',{name: 'time'});
 
   socket.on('message', function(data){
     console.log('received: ' + data.msg);
+
+
+
 
   })
 
@@ -79,7 +82,21 @@ app.use(function(err, req, res, next) {
   });
 });
 
+function buildGui(socket){
+var newDiv=({
+    op:'DIV',
+    id:'newdiv',
+    class:'guibutton',
+    posx:100,
+    posy:100,
+    height:50,
+    width:50
+    }
 
+    )
+
+    socket.emit('gui',newDiv)
+}
 
 
 module.exports = app;

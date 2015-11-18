@@ -8,6 +8,28 @@
         "width": "50",
         "heigth": "50"
       }
+    ],
+    "gui": [
+      {
+        "ID": "VolUp",
+        "Text": "Vol +",
+        "PosX": 10,
+        "PosY": 10,
+        "Height": 200,
+        "Width": 200,
+        "Function": "Volume",
+        "Param": "up"
+      },
+      {
+        "ID": "VolDwn",
+        "Text": "Vol -",
+        "PosX": 220,
+        "PosY": 10,
+        "Height": 200,
+        "Width": 200,
+        "Function": "Voliume",
+        "Param": "down"
+      }
     ]
   }
 }

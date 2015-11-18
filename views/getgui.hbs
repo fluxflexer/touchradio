@@ -22,12 +22,27 @@ function buttonClicked(id){
 
 
 
-    socket.on('chat', function(data){
+    socket.on('gui', function(data){
         $('#chat').append(
-                data.name
-
-
+                data.op
         )
+switch (data.op) {
+    case 'DIV':
+alert (data.op)
+        $('#gui').append(
+                '<DIV class="'+ data.class +'" id="'+ data.id'">'
+        +'</DIV>'
+        )
+
+
+        $(data.id).css('position: absolute')
+
+
+        break;
+}
+
+
+
 
 
 
@@ -50,16 +65,9 @@ function buttonClicked(id){
 
 <a href="http://192.168.1.134:8000/getgui">reload</a>
 
-<div id="chat">
+<div id="gui">
 
 
 </div>
 
-<div id="time">
 
-
-</div>
-
-<div class="guibutton" id="testbutton">
-
-</div>
