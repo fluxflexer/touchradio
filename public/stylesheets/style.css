@@ -36,12 +36,7 @@ body {
 
 .guibutton {
   border: 1px solid #E00D0D !important;
-  height: 68px;
-  width: 65px;
-  /*+placement: 91px 90px;*/
-  position: relative;
-  left: 91px;
-  top: 90px;
+
   position: absolute;
 }
 

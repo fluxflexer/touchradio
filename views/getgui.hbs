@@ -25,17 +25,17 @@ function buttonClicked(id){
     socket.on('gui', function(data){
         $('#chat').append(
                 data.op
-        )
+        );
 switch (data.op) {
     case 'DIV':
-alert (data.op)
+
         $('#gui').append(
                 '<DIV class="'+ data.class +'" id="'+ data.id + '">'
         +'</DIV>'
-        )
+        );
 
 
-        $(data.id).css('position: absolute')
+        $(data.id).css('position: absolute','height: ' + data.height +'px width: ' + data.width +'px top:' + data.top +'px left:' + data.left +'px');
 
 
         break;
@@ -47,7 +47,8 @@ alert (data.op)
 
 
 
-    })
+    });
+
 
     socket.on('time', function(data){
         $('#time').append(

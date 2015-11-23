@@ -87,10 +87,10 @@ var newDiv = {
     op: 'DIV',
     id: 'newdiv',
     class: 'guibutton',
-    posx: 100,
-    posy: 100,
+    top: 150,
+    left: 150,
     height: 80,
-    width: 80
+    width: 180
 }
 
     socket.emit('gui',newDiv)
