@@ -87,8 +87,8 @@ var newDiv = {
     op: 'DIV',
     id: 'newdiv',
     class: 'guibutton',
-    top: 150,
-    left: 150,
+    top: 170,
+    left: 160,
     height: 80,
     width: 180
 }
