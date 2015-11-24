@@ -23,14 +23,16 @@ function buttonClicked(id){
 
 
     socket.on('gui', function(data){
+        var newButton=data.button[0];
         $('#chat').append(
-                data.op
+                
+                newButton.op
         );
-switch (data.op) {
+switch (newButton.op) {
     case 'DIV':
 
         $('#gui').append(
-                '<DIV class="'+ data.class +'" id="'+ data.id + '" style= "height:' + data.height + 'px; width: ' + data.width + 'px; top: '+ data.top +'px; left: ' + data.left +'px; position: absolute" >'
+                '<DIV class="'+ newButton.class +'" id="'+ newButton.id + '" style= "height:' + newButton.height + 'px; width: ' + newButton.width + 'px; top: '+ newButton.top +'px; left: ' + newButton.left +'px; position: absolute" >'
         +'</DIV>'
         );
 

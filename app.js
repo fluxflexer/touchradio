@@ -93,7 +93,12 @@ var newDiv = {
     width: 180
 }
 
-    socket.emit('gui',newDiv)
+var guifile = require("./gui.json");
+
+    var guiProperties = Object.keys(guifile);
+
+
+    socket.emit('gui',guifile)
 }
 
 
