@@ -6,15 +6,42 @@
         "id": "VolUp",
         "text": "Vol +",
         "class": "guibutton",
-        "top": 20,
-        "left": 10,
-        "height": 200,
-        "width": 200,
+        "top": "10",
+        "left": "10",
+        "height": "80",
+        "width": "50",
         "function": "Volume",
         "param": "up"
+      },
+      {
+        "op": "DIV",
+        "id": "VolDwn",
+        "text": "Vol -",
+        "class": "guibutton",
+        "top": "10",
+        "left": "70",
+        "height": "50",
+        "width": "50",
+        "function": "Volume",
+        "param": "down"
+      },
+      {
+        "op": "DIV",
+        "id": "Reload",
+        "text": "Reload",
+        "class": "guibutton",
+        "top": "400",
+        "left": "10",
+        "height": "70",
+        "width": "780",
+        "function": "Reload",
+        "param": "now"
       }
 
     ],
-  "background": "image"
-
+  "settings":[
+    {
+      "background": "image"
+    }
+    ]
 }

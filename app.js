@@ -83,19 +83,11 @@ app.use(function(err, req, res, next) {
 });
 
 function buildGui(socket){
-var newDiv = {
-    op: 'DIV',
-    id: 'newdiv',
-    class: 'guibutton',
-    top: 170,
-    left: 160,
-    height: 80,
-    width: 180
-}
+
 
 var guifile = require("./gui.json");
 
-    var guiProperties = Object.keys(guifile);
+
 
 
     socket.emit('gui',guifile)

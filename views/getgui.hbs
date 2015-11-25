@@ -6,10 +6,7 @@
         socket.emit('message',{msg:'loaded'});
 
 
-        $('.guibutton').on('click',function(event){
-           // alert('clicked');
-            buttonClicked(event.target.id);
-        })
+
 
     });
 
@@ -23,26 +20,32 @@ function buttonClicked(id){
 
 
     socket.on('gui', function(data){
-        var newButton=data.button[0];
+
+
+        $.each(data.buttons, function() {
+            var button = this;
+
+
         $('#chat').append(
-                
-                newButton.op
+
+                button.op
         );
-switch (newButton.op) {
+switch (button.op) {
     case 'DIV':
 
         $('#gui').append(
-                '<DIV class="'+ newButton.class +'" id="'+ newButton.id + '" style= "height:' + newButton.height + 'px; width: ' + newButton.width + 'px; top: '+ newButton.top +'px; left: ' + newButton.left +'px; position: absolute" >'
-        +'</DIV>'
+                '<DIV class="'+ button.class +'" id="'+ button.id + '" style= "height:' + button.height + 'px; width: ' + button.width + 'px; top: '+ button.top +'px; left: ' + button.left +'px; position: absolute" > '+button.text +'</DIV>'
         );
-
+$(button.id).on('click','DIV', function(){
+    alert(button.id)
+})
 
 
         break;
 }
 
 
-
+        });
 
 
 
