@@ -27,6 +27,30 @@
       },
       {
         "op": "DIV",
+        "id": "Station1",
+        "text": "Station1",
+        "class": "guibutton",
+        "top": "200",
+        "left": "10",
+        "height": "80",
+        "width": "80",
+        "function": "setStation",
+        "param": "1"
+      },
+      {
+        "op": "DIV",
+        "id": "Station1",
+        "text": "Station2",
+        "class": "guibutton",
+        "top": "200",
+        "left": "100",
+        "height": "80",
+        "width": "80",
+        "function": "setStation",
+        "param": "2"
+      },
+      {
+        "op": "DIV",
         "id": "Reload",
         "text": "Reload",
         "class": "guibutton",
