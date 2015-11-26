@@ -10,6 +10,16 @@ var users = require('./routes/users');
 var getgui = require('./routes/getgui');
 
 
+
+var mpd = require('mpd'),
+    cmd = mpd.cmd
+var client = mpd.connect({
+  port: 6600,
+  host: 'localhost',
+});
+
+require('./guifunctions.js');
+
 var app = express();
 var http = require( "http" ).createServer( app );
 var io = require( "socket.io" )( http );
@@ -31,6 +41,13 @@ io.on('connection',function(socket){
   socket.on('click',function(data){
     console.log ('function: ' +data.function);
     console.log ('param: ' +data.param);
+
+
+    client.sendCommand(cmd("play 1",[]), function(err,msg){
+if(err) throw err;
+    console.log(msg);
+  })
+
   })
 
 
