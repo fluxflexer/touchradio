@@ -26,10 +26,13 @@ io.on('connection',function(socket){
   socket.on('message', function(data){
     console.log('received: ' + data.msg);
 
-
-
-
   })
+
+  socket.on('click',function(data){
+    console.log ('function: ' +data.function);
+    console.log ('param: ' +data.param);
+  })
+
 
 });
 

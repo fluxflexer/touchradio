@@ -4,7 +4,13 @@
 
     $(document).ready(function() {
         socket.emit('message',{msg:'loaded'});
+        $(document).on('click', '.guibutton' , function() {
 
+            socket.emit('click',{
+                'function':$(this).data('function'),
+                'param':$(this).data('param')
+            })
+        });
 
 
 
@@ -34,11 +40,8 @@ switch (button.op) {
     case 'DIV':
 
         $('#gui').append(
-                '<DIV class="'+ button.class +'" id="'+ button.id + '" style= "height:' + button.height + 'px; width: ' + button.width + 'px; top: '+ button.top +'px; left: ' + button.left +'px; position: absolute" > '+button.text +'</DIV>'
+                '<DIV data-function="'+ button.function +'"data-param="'+ button.param +'" class="'+ button.class +'" id="'+ button.id + '" style= "height:' + button.height + 'px; width: ' + button.width + 'px; top: '+ button.top +'px; left: ' + button.left +'px; position: "absolute" > '+button.text +'</DIV>'
         );
-$(button.id).on('click','DIV', function(){
-    alert(button.id)
-})
 
 
         break;
