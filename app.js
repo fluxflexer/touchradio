@@ -18,7 +18,9 @@ var client = mpd.connect({
   host: 'localhost',
 });
 
-require('./guifunctions.js');
+var guifunctions=require('./guifunctions.js');
+
+
 
 var app = express();
 var http = require( "http" ).createServer( app );
@@ -43,10 +45,7 @@ io.on('connection',function(socket){
     console.log ('param: ' +data.param);
 
 
-    client.sendCommand(cmd("play 1",[]), function(err,msg){
-if(err) throw err;
-    console.log(msg);
-  })
+    //guifunctions.guiButtons(client,data.function,data.param)
 
   })
 
