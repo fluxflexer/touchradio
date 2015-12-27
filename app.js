@@ -9,14 +9,16 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var getgui = require('./routes/getgui');
 
+response = "";
 
 
-var mpd = require('mpd'),
-    cmd = mpd.cmd
-var client = mpd.connect({
-  port: 6600,
-  host: 'localhost',
-});
+
+//var mpd = require('mpd'),
+//    cmd = mpd.cmd
+//var client = mpd.connect({
+//  port: 6600,
+//  host: 'localhost',
+//});
 
 var guifunctions=require('./guifunctions.js');
 
@@ -30,8 +32,14 @@ http.listen(8000, "localhost");
 
 io.on('connection',function(socket){
   console.log("A user is connected");
+  var guifile = require("./gui.json");
 
-    buildGui(socket);
+  var state = guifile.state
+
+  console.log("Panel = " + state.activePanel)
+
+   guifunctions.buildGui(socket);
+guifunctions.startMpcConnector()
 
 
 
@@ -41,12 +49,13 @@ io.on('connection',function(socket){
   })
 
   socket.on('click',function(data){
+
     console.log ('function: ' +data.function);
     console.log ('param: ' +data.param);
 
 
-    //guifunctions.guiButtons(client,data.function,data.param)
-
+   guifunctions.guiButtons(data.function,data.param)
+    console.log (response);
   })
 
 
@@ -100,17 +109,6 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-function buildGui(socket){
-
-
-var guifile = require("./gui.json");
-
-
-
-
-    socket.emit('gui',guifile)
-}
 
 
 module.exports = app;

@@ -1,4 +1,9 @@
 {
+  "state": {
+  "activePanel": "1",
+  "currentStation": "1",
+    "guiEdit": "false"
+},
 
     "buttons": [
       {
@@ -8,7 +13,7 @@
         "class": "guibutton",
         "top": "10",
         "left": "10",
-        "height": "80",
+        "height": "50",
         "width": "50",
         "function": "Volume",
         "param": "up"
@@ -57,12 +62,56 @@
         "top": "400",
         "left": "10",
         "height": "70",
-        "width": "780",
+        "width": "600",
         "function": "Reload",
         "param": "now"
       }
 
     ],
+  "outputs":[
+    {
+      "op": "DIV",
+      "id": "CurrentSong",
+      "initialText": "Information Marquee",
+      "type": "marquee",
+      "class": "output",
+      "top": "10",
+      "left": "130",
+      "height": "40",
+      "width": "630",
+      "scrolltime": "10"
+
+
+    },
+    {
+      "op": "DIV",
+      "id": "State",
+      "type": "marquee",
+      "initialText": "Current State",
+      "class": "output",
+      "top": "200",
+      "left": "130",
+      "height": "40",
+      "width": "630",
+      "scrolltime": "5"
+
+    },
+    {
+      "op": "DIV",
+      "id": "clock",
+      "type": "clock",
+      "initialText": "00:00",
+      "class": "clock",
+      "top": "350",
+      "left": "600",
+      "height": "30",
+      "width": "100"
+
+    }
+
+
+
+  ],
   "settings":[
     {
       "background": "image"

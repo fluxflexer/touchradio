@@ -3,6 +3,7 @@
     var socket = io.connect( "http://localhost:8000");
 
     $(document).ready(function() {
+
         socket.emit('message',{msg:'loaded'});
         $(document).on('click', '.guibutton' , function() {
 
@@ -14,7 +15,11 @@
 
 
 
+
+
     });
+
+
 
 
 function buttonClicked(id){
@@ -24,56 +29,115 @@ function buttonClicked(id){
 }
 
 
+    socket.on('outputHandler', function(data){
 
-    socket.on('gui', function(data){
+switch (data.type){
 
+    case 'marquee':
 
-        $.each(data.buttons, function() {
-            var button = this;
-
-
-        $('#chat').append(
-
-                button.op
-        );
-switch (button.op) {
-    case 'DIV':
-
-        $('#gui').append(
-                '<DIV data-function="'+ button.function +'"data-param="'+ button.param +'" class="'+ button.class +'" id="'+ button.id + '" style= "height:' + button.height + 'px; width: ' + button.width + 'px; top: '+ button.top +'px; left: ' + button.left +'px; position: "absolute" > '+button.text +'</DIV>'
-        );
 
 
         break;
+
+
 }
-
-
-        });
-
-
 
 
     });
 
 
-    socket.on('time', function(data){
-        $('#time').append(
-                data.time
-        )
 
-    })
+    socket.on('gui', function(data) {
+
+        $('#gui').empty();
+        var border = 'none';
+        var state = data.state;
+
+
+        if (state.guiEdit == 'true') {
+
+            border = 'border: 1px; border-style: solid; border-color: #FF0000';
+        }
+
+        $.each(data.buttons, function () {
+            var button = this;
+
+
+            switch (button.op) {
+                case 'DIV':
+
+
+                    $('#gui').append(
+                            '<DIV data-function="' + button.function + '"data-param="' + button.param + '" class="' + button.class + '" id="' + button.id + '" style=  "height:' + button.height + 'px; width: ' + button.width + 'px; top: ' + button.top + 'px; left: ' + button.left + 'px; position: absolute ;' + border + ';" > ' + button.text + '</DIV>'
+                    );
+
+
+                    break;
+            }
+
+
+        });
+
+        $.each(data.outputs, function () {
+            var output = this;
+
+            switch (output.type) {
+                case 'info':
+
+
+                $('#gui').append(
+                        '<DIV  class="' + output.class + '" id="' + output.id + '" style=  "height:' + output.height + 'px; width: ' + output.width + 'px; top: ' + output.top + 'px; left: ' + output.left + 'px; position: absolute ;' + border + ';" > ' + output.initialText + '</DIV>'
+                );
+
+
+                break;
+
+                case 'clock':
+
+
+                    $('#gui').append(
+                            '<DIV  class="' + output.class + '" id="' + output.id + '" style=  "height:' + output.height + 'px; width: ' + output.width + 'px; top: ' + output.top + 'px; left: ' + output.left + 'px; position: absolute ;' + border + ';"><p>' + output.initialText +'</p></DIV>'
+                    );
+                    $("<style>").text("#" + output.id + " p {  margin: 0px; text-align: left;}").appendTo("head");
+
+                    break;
+
+                case 'marquee':
+
+
+                    $('#gui').append(
+                            '<DIV  class="' + output.class + '" id="' + output.id + '" style=  "height:' + output.height + 'px; width: ' + output.width + 'px; top: ' + output.top + 'px; left: ' + output.left + 'px; position: absolute ;' + border + '; overflow: hidden ;" ><p>' + output.initialText +'</p></DIV>'
+                    );
+                    $("<style>").text("#" + output.id + " p { animation: scrolling "+ output.scrolltime +"s ease-in-out infinite; margin: 0px; height: " + output.height +"px; width: "+ output.width +"px; }").appendTo("head");
+
+                    break;
+            }
 
 
 
+        });
+
+        updateGui();
+
+
+    });
+
+function updateGui(){
+
+    var dt = new Date();
+    var time = ((dt.getHours()< 10) ? "0" : "") +dt.getHours()+ ":" + ((dt.getMinutes()< 10) ? "0" : "")+dt.getMinutes()+ ":" + ((dt.getSeconds()< 10) ? "0" : "") + dt.getSeconds();
+    $("#clock p").text(time);
+
+    setTimeout('updateGui()',1000);
+};
 
 
 
 </SCRIPT>
 
-<a href="http://192.168.1.134:8000/getgui">reload</a>
+
 
 <div id="gui">
-
 
 </div>
 
